@@ -39,10 +39,6 @@ switch (sinal) {
               if (isNaN(a) || isNaN(b)) {
                 console.log("Valores inválidos.")
             }
-            else if(b < 0) {
-                console.log(`O resultado de ${a} ${b} é: ` + (a+b));
-                sair();
-            }
             else{
               console.log(`O resultado de ${a} - ${b} é: ` + (a-b));
               sair();
@@ -65,7 +61,7 @@ switch (sinal) {
             } 
             else {
               if (b != 0) {
-              console.log(`O resultado de ${a} / ${b} é: `+ (a/b));
+              console.log(`O resultado de ${a} / ${b} é: `+ (a/b).toFixed(2));
               sair();
             }
             else {
@@ -75,7 +71,7 @@ switch (sinal) {
         break;
     case "%": var a = parseFloat(prompt("Digite o primeiro valor: "));
               var b = parseFloat(prompt("Digite o segundo valor: "));
-              var a2 = a/100;
+              var a2 = a/100; 
 
               if (isNaN(a) || isNaN(b)) {
                 console.log("Valores inválidos.")
@@ -87,4 +83,4 @@ switch (sinal) {
         break;
     default: console.log("O operador digitado é inválido!");
 }
-}
+};
