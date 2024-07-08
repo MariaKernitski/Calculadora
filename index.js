@@ -1,14 +1,16 @@
 var prompt = require("prompt-sync")()
 
 function sair(s) {
-    s = prompt("Digite 's' para sair e 'c' para executar outra operação: ")
-              if (s == "c") {
-                sinal = "";
-              }
-              else {
+    s = prompt("Digite 's' para sair ou pressione 'enter' para executar outra operação: ")
+              if (s.toLowerCase() == "s") {
                 process.exit()
               }
+              else {
+                sinal = "";
+              }
 }
+
+console.log("Bem vindo(a) à calculadora, escolha dentre as opções o operador desejado:")
 
 console.log(`Digite '+' para soma;
 Digite '-' para subtração;
@@ -16,71 +18,48 @@ Digite 'x' para multiplicação;
 Digite '/' para divisão;
 Digite '%' para porcentagem.
 `)
+console.log("OBS: Utilize 'ponto' em vez de 'vírgula' em números decimais. Ex: 2.5")
 
 while (true) {
 
-let sinal = prompt("Digite o sinal da operação:")
+var a = parseFloat(prompt("Digite o primeiro número: "));
+var b = parseFloat(prompt("Digite o segundo número: "));
+
+if (isNaN(a) || isNaN(b)) {
+  console.log("Valores inválidos, por favor digite números válidos.")
+  continue;
+  }
+
+let sinal = prompt("Digite o operador:")
 
 switch (sinal) {
-    case "+": var a = parseFloat(prompt("Digite o primeiro número: "));
-              var b = parseFloat(prompt("Digite o segundo número: "));
+    case "+": console.log(`O resultado da soma de ${a} + ${b} é: ` + (a+b));
+              sair();
+        break;
+        
+    case "-": console.log(`O resultado de ${a} - ${b} é: ` + (a-b));
+              sair();
+        break;
 
-            if (isNaN(a) || isNaN(b)) {
-                console.log("Valores inválidos.")
-            }
-            else {
-              console.log(`O resultado da soma de ${a} + ${b} é: ` + (a+b));
+    case "x": console.log(`O resultado de ${a} x ${b} é: `+ (a*b));
               sair();
-            }
         break;
-    case "-": var a = parseFloat(prompt("Digite o primeiro número: "));
-              var b = parseFloat(prompt("Digite o segundo número: "));
 
-              if (isNaN(a) || isNaN(b)) {
-                console.log("Valores inválidos.")
-            }
-            else{
-              console.log(`O resultado de ${a} - ${b} é: ` + (a-b));
-              sair();
-            }
-        break;
-    case "x": var a = parseFloat(prompt("Digite o primeiro número: "));
-              var b = parseFloat(prompt("Digite o segundo número: "));
-              if (isNaN(a) || isNaN(b)) {
-                console.log("Valores inválidos.")
-            } 
-            else {
-              console.log(`O resultado de ${a} x ${b} é: `+ (a*b));
-              sair();
-            }
-        break;
-    case "/": var a = parseFloat(prompt("Digite o dividendo: "));
-              var b = parseFloat(prompt("Digite o divisor: "));
-              if (isNaN(a) || isNaN(b)) {
-                console.log("Valores inválidos.")
-            } 
-            else {
-              if (b != 0) {
+    case "/": if (b != 0) {
               console.log(`O resultado de ${a} / ${b} é: `+ (a/b).toFixed(2));
               sair();
             }
             else {
-                console.log("O divisor deve ser diferente de 0.")
+                console.log("O divisor(segundo número) deve ser diferente de 0.")
             }
-        }
         break;
-    case "%": var a = parseFloat(prompt("Digite o primeiro valor: "));
-              var b = parseFloat(prompt("Digite o segundo valor: "));
-              var a2 = a/100; 
 
-              if (isNaN(a) || isNaN(b)) {
-                console.log("Valores inválidos.")
-            }
-            else {
+    case "%": var a2 = a/100; 
               console.log(`O resultado de ${a} % de ${b} é: ` + (a2*b).toFixed(2));
               sair();
-            }
         break;
-    default: console.log("O operador digitado é inválido!");
+
+    default: console.log("Operador inválido, digite um operador válido![+ - x / %]");
+    break;
 }
 };
