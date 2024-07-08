@@ -46,7 +46,7 @@ switch (sinal) {
         break;
 
     case "/": if (b != 0) {
-              console.log(`O resultado de ${a} / ${b} é: `+ (a/b).toFixed(2));
+              console.log(`O resultado de ${a} / ${b} é: `+ (a/b));
               sair();
             }
             else {
@@ -55,7 +55,7 @@ switch (sinal) {
         break;
 
     case "%": var a2 = a/100; 
-              console.log(`O resultado de ${a} % de ${b} é: ` + (a2*b).toFixed(2));
+              console.log(`O resultado de ${a} % de ${b} é: ` + (a2*b));
               sair();
         break;
 
