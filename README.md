@@ -1,5 +1,5 @@
 # Calculadora
-✿ Este é o projeto de uma calculadora básica em NodeJS! ✿
+✿ Este é o projeto de uma calculadora simples em NodeJS! ✿
 
 > É possível executar operações de soma, subtração, divisão, multiplicação e porcentagem!
 
